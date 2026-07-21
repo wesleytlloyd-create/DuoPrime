@@ -1,0 +1,199 @@
+// DuoPrime Main SCSS File
+// Import all partials
+
+@import 'partials/variables';
+@import 'partials/layout';
+@import 'partials/responsive';
+
+// Additional Utility Classes
+.text-gold {
+    color: var(--accent-color);
+}
+
+.bg-primary-dark {
+    background-color: var(--primary-color);
+}
+
+// Service Card Enhancements
+.service-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        border-color: var(--accent-color);
+        
+        i {
+            color: var(--primary-color);
+        }
+    }
+}
+
+// Project Card Enhancements
+.project-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-image {
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+    
+    .badge {
+        font-weight: 600;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+// Badges
+.badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.bg-warning {
+    background-color: var(--accent-color) !important;
+}
+
+// Contact Card Enhancements
+.contact-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(11, 30, 61, 0.1);
+        
+        a {
+            color: var(--accent-color);
+        }
+    }
+    
+    a {
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+}
+
+// Form Enhancements
+.form-control,
+.form-select {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    
+    &:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+    }
+}
+
+.form-label {
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+// Button Enhancements
+.btn {
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    
+    &.btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        
+        &:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    }
+    
+    &.btn-warning {
+        background-color: var(--accent-color);
+        border: none;
+        color: var(--primary-color);
+        font-weight: 600;
+        
+        &:hover {
+            background-color: #c99f2a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+    }
+}
+
+// Hero Section Button
+.hero-section {
+    .btn-warning {
+        background-color: var(--accent-color);
+        border: none;
+        color: var(--primary-color);
+        font-weight: 600;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        &:hover {
+            background-color: #c99f2a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+    }
+}
+
+// Scrolling Effects
+html {
+    scroll-behavior: smooth;
+}
+
+// Animations
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Print Styles
+@media print {
+    #mainNav,
+    footer,
+    .btn {
+        display: none;
+    }
+}

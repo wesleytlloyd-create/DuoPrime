@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DuoPrime website loaded');
     initializeEventListeners();
     initializeFormValidation();
+    updateActiveNavLink();
+    lazyLoadImages();
 });
 
 // Initialize Event Listeners
@@ -56,10 +58,22 @@ function handleContactFormSubmit(event) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     
-    // Validate form
-    if (!validateForm(data)) {
-        alert('Please fill in all required fields correctly.');
-        return;
+    // Validate form using ValidationRules if available
+    if (typeof ValidationRules !== 'undefined') {
+        const validationRules = {
+            name: 'name',
+            email: 'email',
+            phone: 'phone',
+            service: 'required',
+            message: 'message'
+        };
+        
+        const errors = validateFormData(data, validationRules);
+        if (Object.keys(errors).length > 0) {
+            displayValidationErrors(errors, event.target);
+            showAlert('Please fix the errors in the form.', 'danger');
+            return;
+        }
     }
 
     // Log form data (in production, this would send to a server)
@@ -69,6 +83,7 @@ function handleContactFormSubmit(event) {
     showAlert('Thank you for your message! We will get back to you shortly.', 'success');
     
     // Reset form
+    event.target.classList.remove('was-validated');
     event.target.reset();
 }
 
@@ -79,10 +94,21 @@ function handleQuoteFormSubmit(event) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     
-    // Validate form
-    if (!validateForm(data)) {
-        alert('Please fill in all required fields.');
-        return;
+    // Validate form using ValidationRules if available
+    if (typeof ValidationRules !== 'undefined') {
+        const validationRules = {
+            name: 'name',
+            email: 'email',
+            phone: 'phone',
+            description: 'message'
+        };
+        
+        const errors = validateFormData(data, validationRules);
+        if (Object.keys(errors).length > 0) {
+            displayValidationErrors(errors, event.target);
+            showAlert('Please fix the errors in the form.', 'danger');
+            return;
+        }
     }
 
     // Log quote data (in production, this would send to a server)
@@ -118,7 +144,7 @@ function validateForm(data) {
 // Show Alert Message
 function showAlert(message, type = 'info') {
     const alertHTML = `
-        <div class="alert alert-${type} alert-dismissible fade show" role="alert" style="position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 300px;">
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert" style="position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             ${message}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -142,14 +168,18 @@ function showAlert(message, type = 'info') {
 function submitQuote() {
     const form = document.getElementById('quoteForm');
     if (form) {
-        const event = new Event('submit');
+        const event = new Event('submit', { bubbles: true, cancelable: true });
         form.dispatchEvent(event);
         
-        // Close modal after submission
-        const modal = bootstrap.Modal.getInstance(document.getElementById('quoteModal'));
-        if (modal) {
-            modal.hide();
-        }
+        // Close modal after validation passes
+        setTimeout(() => {
+            if (!form.classList.contains('was-validated') || form.checkValidity()) {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('quoteModal'));
+                if (modal) {
+                    modal.hide();
+                }
+            }
+        }, 500);
     }
 }
 
@@ -160,7 +190,9 @@ function lazyLoadImages() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.dataset.src;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
                     img.classList.remove('lazy');
                     observer.unobserve(img);
                 }
@@ -195,13 +227,3 @@ function updateActiveNavLink() {
         });
     });
 }
-
-// Initialize lazy loading
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', lazyLoadImages);
-} else {
-    lazyLoadImages();
-}
-
-// Initialize active nav link tracking
-updateActiveNavLink();
