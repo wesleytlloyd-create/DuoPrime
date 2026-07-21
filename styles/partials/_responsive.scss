@@ -1,0 +1,143 @@
+@import 'variables';
+
+// Media Query Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Tablet Devices (768px and up)
+@media (min-width: $breakpoint-md) {
+    .container {
+        max-width: 720px;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+
+    section {
+        padding: $spacer-4 0;
+    }
+}
+
+// Large Devices (992px and up)
+@media (min-width: $breakpoint-lg) {
+    .container {
+        max-width: 960px;
+    }
+
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+
+    .grid-3-col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacer-3;
+    }
+}
+
+// Extra Large Devices (1200px and up)
+@media (min-width: $breakpoint-xl) {
+    .container {
+        max-width: 1140px;
+    }
+
+    h1 { font-size: 3.5rem; }
+
+    section {
+        padding: $spacer-5 0;
+    }
+}
+
+// Mobile Devices (less than 576px)
+@media (max-width: 575.98px) {
+    .container {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .lead {
+        font-size: 0.95rem;
+    }
+
+    section {
+        padding: $spacer-3 0;
+    }
+
+    .navbar-nav {
+        padding-top: $spacer-2;
+    }
+
+    .row {
+        --bs-gutter-x: 1rem;
+        --bs-gutter-y: 1.5rem;
+    }
+
+    .service-card,
+    .project-card,
+    .contact-card {
+        margin-bottom: $spacer-3;
+    }
+}
+
+// Landscape Mobile (576px to 768px)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    section {
+        padding: $spacer-3 0;
+    }
+}
+
+// Print Styles
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .navbar,
+    footer,
+    .btn,
+    .modal,
+    .contact-form {
+        display: none !important;
+    }
+
+    section {
+        page-break-inside: avoid;
+        padding: $spacer-2 0;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}

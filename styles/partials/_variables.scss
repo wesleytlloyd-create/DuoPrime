@@ -1,0 +1,41 @@
+// Color Palette
+$primary-color: #0B1E3D;
+$secondary-color: #1a3a52;
+$accent-color: #D4AF37;
+$success-color: #1a5a2e;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #0dcaf0;
+$light-bg: #f8f9fa;
+$dark-bg: #212529;
+
+// Typography
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Open Sans', sans-serif;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
+$line-height-base: 1.6;
+
+// Spacing
+$spacer: 1rem;
+$spacer-2: $spacer * 2;
+$spacer-3: $spacer * 3;
+$spacer-4: $spacer * 4;
+$spacer-5: $spacer * 5;
+
+// Border Radius
+$border-radius: 10px;
+$border-radius-sm: 6px;
+$border-radius-lg: 15px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+$transition-slow: all 0.5s ease;

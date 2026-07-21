@@ -1,0 +1,312 @@
+:root {
+    --primary-color: #0B1E3D;
+    --secondary-color: #1a3a52;
+    --accent-color: #D4AF37;
+    --success-color: #1a5a2e;
+    --light-bg: #f8f9fa;
+    --text-dark: #333;
+    --text-muted: #6c757d;
+    --border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Navigation */
+#mainNav {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    color: var(--accent-color) !important;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section .btn-warning {
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-section .btn-warning:hover {
+    background-color: #c99f2a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Services Section */
+.service-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-color);
+}
+
+.service-card i {
+    transition: color 0.3s ease;
+}
+
+.service-card:hover i {
+    color: var(--primary-color);
+}
+
+/* Projects Section */
+.project-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-card .badge {
+    font-weight: 600;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.bg-warning {
+    background-color: var(--accent-color) !important;
+}
+
+/* Contact Cards */
+.contact-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(11, 30, 61, 0.1);
+}
+
+.contact-card a {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: var(--accent-color);
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.form-label {
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    border-top: 3px solid var(--accent-color);
+}
+
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Utilities */
+.section-title {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.text-gold {
+    color: var(--accent-color);
+}
+
+.bg-primary-dark {
+    background-color: var(--primary-color);
+}
+
+/* Scrolling Effects */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .service-card,
+    .project-card {
+        margin-bottom: 20px;
+    }
+
+    .contact-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Print Styles */
+@media print {
+    #mainNav,
+    footer,
+    .btn {
+        display: none;
+    }
+}

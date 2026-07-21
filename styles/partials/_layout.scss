@@ -1,0 +1,130 @@
+@import 'variables';
+
+// Global Layout
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-secondary;
+    color: $primary-color;
+    line-height: $line-height-base;
+    background-color: #fff;
+}
+
+// Container
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+// Sections
+section {
+    padding: $spacer-5 0;
+
+    &.bg-light {
+        background-color: $light-bg;
+    }
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-primary;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: $spacer-3;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: $spacer-2;
+    font-size: $font-size-base;
+}
+
+// Navigation Layout
+.navbar {
+    box-shadow: $shadow-sm;
+    padding: $spacer-2 0;
+
+    .navbar-brand {
+        font-size: $font-size-lg * 1.5;
+        color: $accent-color !important;
+        font-weight: 700;
+    }
+
+    .nav-link {
+        margin: 0 $spacer;
+        transition: $transition-base;
+        font-weight: 600;
+
+        &:hover {
+            color: $accent-color !important;
+        }
+    }
+}
+
+// Hero Section
+.hero-section {
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: $spacer-3;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .lead {
+        font-size: $font-size-lg * 1.2;
+        margin-bottom: $spacer-4;
+    }
+}
+
+// Grid Layout
+.row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
+}
+
+// Cards
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: $border-radius-sm;
+    transition: $transition-base;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+        box-shadow: $shadow-lg;
+        transform: translateY(-5px);
+    }
+}
+
+// Footer
+footer {
+    background-color: $primary-color;
+    color: #fff;
+    border-top: 3px solid $accent-color;
+    margin-top: $spacer-5;
+
+    a {
+        color: #fff;
+        transition: $transition-base;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+}

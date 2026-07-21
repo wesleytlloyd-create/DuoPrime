@@ -1,0 +1,30 @@
+{
+  "name": "duoprime-website",
+  "version": "1.0.0",
+  "description": "DuoPrime Maintenance - Professional property maintenance services website",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server",
+    "build": "npm run compile:scss",
+    "compile:scss": "sass styles/main.scss styles/main.css",
+    "watch:scss": "sass --watch styles:styles",
+    "dev": "npm run watch:scss & npm run start"
+  },
+  "keywords": [
+    "property",
+    "maintenance",
+    "refurbishment",
+    "manchester",
+    "services"
+  ],
+  "author": "DuoPrime Maintenance",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "sass": "^1.65.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "@fortawesome/fontawesome-free": "^6.4.0"
+  }
+}
