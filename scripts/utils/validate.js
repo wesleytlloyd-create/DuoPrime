@@ -1,96 +1,92 @@
-/**
- * Form Validation Utilities
- * Provides validation functions for various form fields
- */
-
+// Form Validation Utilities
 const ValidationRules = {
-    // Email validation
-    email: function(value) {
+    /**
+     * Validate a text field (name, etc.)
+     */
+    validateName: function(value) {
+        if (!value || value.trim().length < 2) {
+            return { valid: false, message: 'Please enter a valid name (minimum 2 characters).' };
+        }
+        return { valid: true };
+    },
+
+    /**
+     * Validate email format
+     */
+    validateEmail: function(value) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(value);
+        if (!value || !emailRegex.test(value)) {
+            return { valid: false, message: 'Please enter a valid email address.' };
+        }
+        return { valid: true };
     },
 
-    // Phone validation (UK format)
-    phone: function(value) {
-        const phoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
-        return phoneRegex.test(value) || /^[0-9+\-\s()]{10,}$/.test(value);
+    /**
+     * Validate phone number
+     */
+    validatePhone: function(value) {
+        const phoneRegex = /^[0-9+\-\s()]{10,}$/;
+        if (!value || !phoneRegex.test(value)) {
+            return { valid: false, message: 'Please enter a valid phone number (minimum 10 digits).' };
+        }
+        return { valid: true };
     },
 
-    // Name validation (min 2 characters)
-    name: function(value) {
-        return value && value.trim().length >= 2;
+    /**
+     * Validate required field
+     */
+    validateRequired: function(value, fieldName = 'This field') {
+        if (!value || value.trim() === '') {
+            return { valid: false, message: `${fieldName} is required.` };
+        }
+        return { valid: true };
     },
 
-    // Message validation (min 10 characters)
-    message: function(value) {
-        return value && value.trim().length >= 10;
+    /**
+     * Validate message field
+     */
+    validateMessage: function(value) {
+        if (!value || value.trim().length < 10) {
+            return { valid: false, message: 'Please enter a message (minimum 10 characters).' };
+        }
+        return { valid: true };
     },
 
-    // Required field
-    required: function(value) {
-        return value && value.toString().trim().length > 0;
-    },
-
-    // URL validation
-    url: function(value) {
-        const urlRegex = /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/;
-        return urlRegex.test(value);
-    },
-
-    // Postcode validation (UK format)
-    postcode: function(value) {
-        const postcodeRegex = /^[A-Z]{1,2}[0-9R][0-9A-Z]?\s?[0-9][ABD-HJLNPQRST-UZ]{2}$/i;
-        return postcodeRegex.test(value);
-    },
-
-    // Number validation
-    number: function(value) {
-        return !isNaN(value) && value !== '';
-    },
-
-    // Min length validation
-    minLength: function(value, length) {
-        return value && value.toString().length >= length;
-    },
-
-    // Max length validation
-    maxLength: function(value, length) {
-        return value && value.toString().length <= length;
+    /**
+     * Validate a field based on rules
+     */
+    validateField: function(value, rule, fieldName = 'Field') {
+        switch (rule) {
+            case 'name':
+                return this.validateName(value);
+            case 'email':
+                return this.validateEmail(value);
+            case 'phone':
+                return this.validatePhone(value);
+            case 'required':
+                return this.validateRequired(value, fieldName);
+            case 'message':
+                return this.validateMessage(value);
+            default:
+                return { valid: true };
+        }
     }
 };
 
 /**
- * Validate individual field
- * @param {string} fieldName - Name of the field to validate
- * @param {*} value - Value to validate
- * @param {string} rule - Validation rule to apply
- * @returns {boolean} - True if valid, false otherwise
+ * Validate form data against rules
  */
-function validateField(fieldName, value, rule) {
-    if (ValidationRules[rule]) {
-        return ValidationRules[rule](value);
-    }
-    console.warn(`Validation rule '${rule}' not found`);
-    return true;
-}
-
-/**
- * Validate entire form
- * @param {Object} formData - Object containing form field data
- * @param {Object} validationRules - Object with field names and their validation rules
- * @returns {Object} - Object with errors if any
- */
-function validateFormData(formData, validationRules) {
+function validateFormData(data, rules) {
     const errors = {};
 
-    for (const [fieldName, rules] of Object.entries(validationRules)) {
-        const value = formData[fieldName];
-        const fieldRules = Array.isArray(rules) ? rules : [rules];
+    for (const field in rules) {
+        if (rules.hasOwnProperty(field)) {
+            const value = data[field] || '';
+            const rule = rules[field];
+            const result = ValidationRules.validateField(value, rule, field);
 
-        for (const rule of fieldRules) {
-            if (!validateField(fieldName, value, rule)) {
-                errors[fieldName] = `${fieldName} is invalid`;
-                break;
+            if (!result.valid) {
+                errors[field] = result.message;
             }
         }
     }
@@ -99,39 +95,38 @@ function validateFormData(formData, validationRules) {
 }
 
 /**
- * Display validation errors
- * @param {Object} errors - Object with field names and error messages
- * @param {HTMLElement} form - Form element
+ * Display validation errors in form
  */
 function displayValidationErrors(errors, form) {
     // Clear previous errors
     form.querySelectorAll('.invalid-feedback').forEach(el => {
         el.style.display = 'none';
     });
-    form.querySelectorAll('.is-invalid').forEach(el => {
-        el.classList.remove('is-invalid');
-    });
 
-    // Display new errors
-    for (const [fieldName, errorMessage] of Object.entries(errors)) {
-        const field = form.querySelector(`[name="${fieldName}"]`);
-        if (field) {
-            field.classList.add('is-invalid');
-            const feedback = field.nextElementSibling;
-            if (feedback && feedback.classList.contains('invalid-feedback')) {
-                feedback.textContent = errorMessage;
-                feedback.style.display = 'block';
+    for (const field in errors) {
+        if (errors.hasOwnProperty(field)) {
+            const input = form.querySelector(`[name="${field}"]`);
+            if (input) {
+                input.classList.add('is-invalid');
+                const feedbackEl = input.nextElementSibling;
+                if (feedbackEl && feedbackEl.classList.contains('invalid-feedback')) {
+                    feedbackEl.textContent = errors[field];
+                    feedbackEl.style.display = 'block';
+                }
             }
         }
     }
 }
 
-// Export functions for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        ValidationRules,
-        validateField,
-        validateFormData,
-        displayValidationErrors
-    };
+/**
+ * Clear validation errors from form
+ */
+function clearValidationErrors(form) {
+    form.querySelectorAll('.form-control, .form-select').forEach(el => {
+        el.classList.remove('is-invalid');
+    });
+
+    form.querySelectorAll('.invalid-feedback').forEach(el => {
+        el.style.display = 'none';
+    });
 }

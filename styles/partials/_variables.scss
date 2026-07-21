@@ -1,41 +1,48 @@
-// Color Palette
+// Color Variables
 $primary-color: #0B1E3D;
 $secondary-color: #1a3a52;
 $accent-color: #D4AF37;
 $success-color: #1a5a2e;
-$danger-color: #dc3545;
-$warning-color: #ffc107;
-$info-color: #0dcaf0;
+$info-color: #2c5aa8;
 $light-bg: #f8f9fa;
-$dark-bg: #212529;
-
-// Typography
-$font-primary: 'Poppins', sans-serif;
-$font-secondary: 'Open Sans', sans-serif;
-$font-size-base: 1rem;
-$font-size-lg: 1.25rem;
-$font-size-sm: 0.875rem;
-$line-height-base: 1.6;
-
-// Spacing
-$spacer: 1rem;
-$spacer-2: $spacer * 2;
-$spacer-3: $spacer * 3;
-$spacer-4: $spacer * 4;
-$spacer-5: $spacer * 5;
-
-// Border Radius
+$dark-bg: #333;
+$text-dark: #333;
+$text-muted: #6c757d;
 $border-radius: 10px;
-$border-radius-sm: 6px;
-$border-radius-lg: 15px;
+$border-light: #e9ecef;
+$border-color: #ddd;
+
+// Font Variables
+$font-primary: 'Open Sans', sans-serif;
+$font-heading: 'Poppins', sans-serif;
+$font-weight-light: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Spacing Variables
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-base: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-2xl: 4rem;
+
+// Breakpoints
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1440px;
 
 // Shadows
-$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-$shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
-$shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+$box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$box-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+$box-shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
 
 // Transitions
-$transition-base: all 0.3s ease;
-$transition-fast: all 0.2s ease;
-$transition-slow: all 0.5s ease;
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;

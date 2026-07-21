@@ -1,130 +1,431 @@
 @import 'variables';
 
-// Global Layout
-html {
-    scroll-behavior: smooth;
+:root {
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --accent-color: #{$accent-color};
+    --success-color: #{$success-color};
+    --light-bg: #{$light-bg};
+    --text-dark: #{$text-dark};
+    --text-muted: #{$text-muted};
+    --border-radius: #{$border-radius};
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: $font-secondary;
-    color: $primary-color;
-    line-height: $line-height-base;
+    font-family: $font-primary;
+    color: $text-dark;
+    line-height: 1.6;
     background-color: #fff;
 }
 
-// Container
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-// Sections
-section {
-    padding: $spacer-5 0;
-
-    &.bg-light {
-        background-color: $light-bg;
-    }
-}
-
-// Typography
 h1, h2, h3, h4, h5, h6 {
-    font-family: $font-primary;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: $spacer-3;
+    font-family: $font-heading;
+    font-weight: $font-weight-bold;
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-h4 { font-size: 1.75rem; }
-h5 { font-size: 1.5rem; }
-h6 { font-size: 1.25rem; }
-
-p {
-    margin-bottom: $spacer-2;
-    font-size: $font-size-base;
-}
-
-// Navigation Layout
-.navbar {
-    box-shadow: $shadow-sm;
-    padding: $spacer-2 0;
+/* Navigation */
+#mainNav {
+    box-shadow: $box-shadow-sm;
+    background-color: $primary-color;
+    padding: 1rem 0;
 
     .navbar-brand {
-        font-size: $font-size-lg * 1.5;
+        font-size: 1.8rem;
         color: $accent-color !important;
-        font-weight: 700;
-    }
+        font-weight: $font-weight-bold;
 
-    .nav-link {
-        margin: 0 $spacer;
-        transition: $transition-base;
-        font-weight: 600;
-
-        &:hover {
-            color: $accent-color !important;
+        i {
+            margin-right: 0.5rem;
         }
     }
 }
 
-// Hero Section
+.nav-link {
+    font-weight: $font-weight-medium;
+    transition: color $transition-base;
+    margin-left: 1rem;
+    color: #fff !important;
+
+    &:hover,
+    &.active {
+        color: $accent-color !important;
+    }
+}
+
+.navbar-toggler {
+    border-color: $accent-color;
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='#{$accent-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+}
+
+/* Hero Section */
 .hero-section {
     background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-    color: #fff;
     position: relative;
     overflow: hidden;
-    min-height: 600px;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba($accent-color, 0.1) 0%, transparent 50%),
+                          radial-gradient(circle at 80% 80%, rgba($accent-color, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+
     h1 {
-        font-size: 3.5rem;
-        margin-bottom: $spacer-3;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-weight: $font-weight-extrabold;
+        color: #fff;
     }
 
     .lead {
-        font-size: $font-size-lg * 1.2;
-        margin-bottom: $spacer-4;
+        color: #fff;
+        font-size: 1.25rem;
+    }
+
+    .btn-warning {
+        background-color: $accent-color;
+        border: none;
+        color: $primary-color;
+        font-weight: $font-weight-semibold;
+        transition: transform $transition-base, box-shadow $transition-base;
+        padding: 0.75rem 2.5rem;
+
+        &:hover {
+            background-color: darken($accent-color, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba($accent-color, 0.3);
+            color: $primary-color;
+        }
     }
 }
 
-// Grid Layout
-.row {
-    --bs-gutter-x: 2rem;
-    --bs-gutter-y: 2rem;
+/* Sections */
+section {
+    padding: 5rem 0;
+
+    h2 {
+        margin-bottom: 3rem;
+        font-weight: $font-weight-extrabold;
+        font-size: 2.5rem;
+    }
 }
 
-// Cards
-.card {
-    border: 1px solid #e9ecef;
-    border-radius: $border-radius-sm;
-    transition: $transition-base;
-    box-shadow: $shadow-sm;
+.bg-light {
+    background-color: $light-bg !important;
+}
+
+/* Service Section */
+.service-card {
+    transition: all $transition-base;
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+    padding: 2rem;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    i {
+        color: $accent-color;
+        transition: color $transition-base;
+    }
 
     &:hover {
-        box-shadow: $shadow-lg;
-        transform: translateY(-5px);
+        transform: translateY(-10px);
+        box-shadow: $box-shadow-hover;
+        border-color: $accent-color;
+
+        i {
+            color: $primary-color;
+        }
     }
 }
 
-// Footer
-footer {
-    background-color: $primary-color;
-    color: #fff;
-    border-top: 3px solid $accent-color;
-    margin-top: $spacer-5;
+/* Projects Section */
+.project-card {
+    transition: all $transition-base;
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background-color: #fff;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+        transition: transform $transition-base;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        i {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin: 0;
+            font-weight: $font-weight-semibold;
+        }
+    }
+
+    .card-body {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        h5 {
+            font-weight: $font-weight-bold;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: $text-muted;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+    }
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: $font-weight-semibold;
+    font-size: 0.8rem;
+}
+
+.bg-warning {
+    background-color: $accent-color !important;
+    color: $primary-color;
+}
+
+.bg-success {
+    background-color: $success-color !important;
+}
+
+.bg-info {
+    background-color: $info-color !important;
+}
+
+/* Contact Cards */
+.contact-card {
+    transition: all $transition-base;
+    border: 1px solid $border-light;
+    border-radius: $border-radius;
+    padding: 2rem;
+    background-color: $light-bg;
+    text-align: center;
+
+    i {
+        color: $primary-color;
+    }
+
+    h5 {
+        font-weight: $font-weight-bold;
+        margin: 1rem 0;
+    }
 
     a {
-        color: #fff;
-        transition: $transition-base;
+        font-weight: $font-weight-semibold;
+        color: $primary-color;
+        text-decoration: none;
+        transition: color $transition-base;
 
         &:hover {
             color: $accent-color;
         }
+    }
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba($primary-color, 0.1);
+    }
+}
+
+/* Forms */
+.form-control,
+.form-select {
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color $transition-base, box-shadow $transition-base;
+
+    &:focus {
+        border-color: $accent-color;
+        box-shadow: 0 0 0 0.2rem rgba($accent-color, 0.25);
+        outline: none;
+    }
+}
+
+.form-label {
+    color: $text-dark;
+    margin-bottom: 0.5rem;
+    font-weight: $font-weight-semibold;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    font-weight: $font-weight-semibold;
+    transition: all $transition-base;
+    border: none;
+    padding: 0.5rem 1.5rem;
+
+    &.btn-primary {
+        background-color: $primary-color;
+        color: #fff;
+
+        &:hover {
+            background-color: $secondary-color;
+            transform: translateY(-2px);
+        }
+    }
+
+    &.btn-warning {
+        background-color: $accent-color;
+        color: $primary-color;
+
+        &:hover {
+            background-color: darken($accent-color, 10%);
+            color: $primary-color;
+        }
+    }
+
+    &.btn-lg {
+        padding: 0.75rem 2rem;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: $primary-color;
+    border-top: 3px solid $accent-color;
+    color: #fff;
+
+    h5 {
+        color: #fff;
+        margin-bottom: 1rem;
+    }
+
+    a {
+        color: $text-muted;
+        text-decoration: none;
+        transition: color $transition-base;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+
+    p {
+        margin-bottom: 0.5rem;
+    }
+
+    hr {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Utilities */
+.section-title {
+    position: relative;
+    padding-bottom: 1.5rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: $accent-color;
+        border-radius: 2px;
+    }
+}
+
+.text-gold {
+    color: $accent-color;
+}
+
+.bg-primary-dark {
+    background-color: $primary-color;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Print Styles */
+@media print {
+    #mainNav,
+    footer,
+    .btn {
+        display: none;
     }
 }

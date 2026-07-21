@@ -1,217 +1,315 @@
-/**
- * DOM Manipulation Utilities
- * Provides utility functions for common DOM operations
- */
+// DOM Manipulation Utilities
 
+/**
+ * Utility object for DOM operations
+ */
 const DOM = {
     /**
-     * Select element(s)
-     * @param {string} selector - CSS selector
-     * @param {Element} parent - Parent element (default: document)
-     * @returns {Element|NodeList|null}
+     * Query selector wrapper
      */
-    select: function(selector, parent = document) {
-        const result = parent.querySelectorAll(selector);
-        return result.length === 1 ? result[0] : result.length > 0 ? result : null;
+    select: function(selector) {
+        return document.querySelector(selector);
     },
 
     /**
-     * Select single element
-     * @param {string} selector - CSS selector
-     * @param {Element} parent - Parent element (default: document)
-     * @returns {Element|null}
+     * Query selector all wrapper
      */
-    selectOne: function(selector, parent = document) {
-        return parent.querySelector(selector);
+    selectAll: function(selector) {
+        return document.querySelectorAll(selector);
     },
 
     /**
-     * Select all elements
-     * @param {string} selector - CSS selector
-     * @param {Element} parent - Parent element (default: document)
-     * @returns {NodeList}
+     * Add class to element
      */
-    selectAll: function(selector, parent = document) {
-        return parent.querySelectorAll(selector);
+    addClass: function(element, className) {
+        if (element) {
+            element.classList.add(className);
+        }
     },
 
     /**
-     * Add class to element(s)
-     * @param {Element|NodeList} elements - Element(s) to modify
-     * @param {string} className - Class name to add
+     * Remove class from element
      */
-    addClass: function(elements, className) {
-        const nodeList = elements instanceof NodeList ? elements : [elements];
-        nodeList.forEach(el => el.classList.add(className));
+    removeClass: function(element, className) {
+        if (element) {
+            element.classList.remove(className);
+        }
     },
 
     /**
-     * Remove class from element(s)
-     * @param {Element|NodeList} elements - Element(s) to modify
-     * @param {string} className - Class name to remove
+     * Toggle class on element
      */
-    removeClass: function(elements, className) {
-        const nodeList = elements instanceof NodeList ? elements : [elements];
-        nodeList.forEach(el => el.classList.remove(className));
-    },
-
-    /**
-     * Toggle class on element(s)
-     * @param {Element|NodeList} elements - Element(s) to modify
-     * @param {string} className - Class name to toggle
-     */
-    toggleClass: function(elements, className) {
-        const nodeList = elements instanceof NodeList ? elements : [elements];
-        nodeList.forEach(el => el.classList.toggle(className));
-    },
-
-    /**
-     * Set HTML content
-     * @param {Element} element - Target element
-     * @param {string} html - HTML content
-     */
-    setHTML: function(element, html) {
-        element.innerHTML = html;
-    },
-
-    /**
-     * Set text content
-     * @param {Element} element - Target element
-     * @param {string} text - Text content
-     */
-    setText: function(element, text) {
-        element.textContent = text;
-    },
-
-    /**
-     * Get element attribute
-     * @param {Element} element - Target element
-     * @param {string} attribute - Attribute name
-     * @returns {string|null}
-     */
-    getAttribute: function(element, attribute) {
-        return element.getAttribute(attribute);
-    },
-
-    /**
-     * Set element attribute
-     * @param {Element} element - Target element
-     * @param {string} attribute - Attribute name
-     * @param {string} value - Attribute value
-     */
-    setAttribute: function(element, attribute, value) {
-        element.setAttribute(attribute, value);
-    },
-
-    /**
-     * Remove element attribute
-     * @param {Element} element - Target element
-     * @param {string} attribute - Attribute name
-     */
-    removeAttribute: function(element, attribute) {
-        element.removeAttribute(attribute);
-    },
-
-    /**
-     * Add event listener
-     * @param {Element} element - Target element
-     * @param {string} event - Event type
-     * @param {Function} callback - Event handler
-     */
-    on: function(element, event, callback) {
-        element.addEventListener(event, callback);
-    },
-
-    /**
-     * Remove event listener
-     * @param {Element} element - Target element
-     * @param {string} event - Event type
-     * @param {Function} callback - Event handler
-     */
-    off: function(element, event, callback) {
-        element.removeEventListener(event, callback);
-    },
-
-    /**
-     * Show element
-     * @param {Element|NodeList} elements - Element(s) to show
-     */
-    show: function(elements) {
-        const nodeList = elements instanceof NodeList ? elements : [elements];
-        nodeList.forEach(el => {
-            el.style.display = '';
-            el.classList.remove('hidden');
-        });
-    },
-
-    /**
-     * Hide element
-     * @param {Element|NodeList} elements - Element(s) to hide
-     */
-    hide: function(elements) {
-        const nodeList = elements instanceof NodeList ? elements : [elements];
-        nodeList.forEach(el => {
-            el.style.display = 'none';
-            el.classList.add('hidden');
-        });
+    toggleClass: function(element, className) {
+        if (element) {
+            element.classList.toggle(className);
+        }
     },
 
     /**
      * Check if element has class
-     * @param {Element} element - Target element
-     * @param {string} className - Class name
-     * @returns {boolean}
      */
     hasClass: function(element, className) {
-        return element.classList.contains(className);
+        return element && element.classList.contains(className);
     },
 
     /**
-     * Get element dimensions
-     * @param {Element} element - Target element
-     * @returns {Object} - Object with width and height
+     * Set text content
      */
-    getDimensions: function(element) {
-        return {
-            width: element.offsetWidth,
-            height: element.offsetHeight,
-            top: element.offsetTop,
-            left: element.offsetLeft
-        };
+    setText: function(element, text) {
+        if (element) {
+            element.textContent = text;
+        }
     },
 
     /**
-     * Scroll to element
-     * @param {Element} element - Target element
-     * @param {boolean} smooth - Use smooth scroll
+     * Set HTML content
      */
-    scrollTo: function(element, smooth = true) {
-        element.scrollIntoView({
-            behavior: smooth ? 'smooth' : 'auto',
-            block: 'start'
-        });
+    setHTML: function(element, html) {
+        if (element) {
+            element.innerHTML = html;
+        }
+    },
+
+    /**
+     * Get text content
+     */
+    getText: function(element) {
+        return element ? element.textContent : '';
+    },
+
+    /**
+     * Get HTML content
+     */
+    getHTML: function(element) {
+        return element ? element.innerHTML : '';
+    },
+
+    /**
+     * Set attribute
+     */
+    setAttribute: function(element, attr, value) {
+        if (element) {
+            element.setAttribute(attr, value);
+        }
+    },
+
+    /**
+     * Get attribute
+     */
+    getAttribute: function(element, attr) {
+        return element ? element.getAttribute(attr) : null;
+    },
+
+    /**
+     * Remove attribute
+     */
+    removeAttribute: function(element, attr) {
+        if (element) {
+            element.removeAttribute(attr);
+        }
+    },
+
+    /**
+     * Set CSS styles
+     */
+    setStyle: function(element, styles) {
+        if (element) {
+            Object.assign(element.style, styles);
+        }
+    },
+
+    /**
+     * Show element
+     */
+    show: function(element) {
+        if (element) {
+            element.style.display = '';
+        }
+    },
+
+    /**
+     * Hide element
+     */
+    hide: function(element) {
+        if (element) {
+            element.style.display = 'none';
+        }
+    },
+
+    /**
+     * Check if element is visible
+     */
+    isVisible: function(element) {
+        return element && element.style.display !== 'none';
+    },
+
+    /**
+     * Add event listener
+     */
+    on: function(element, event, callback) {
+        if (element) {
+            element.addEventListener(event, callback);
+        }
+    },
+
+    /**
+     * Remove event listener
+     */
+    off: function(element, event, callback) {
+        if (element) {
+            element.removeEventListener(event, callback);
+        }
+    },
+
+    /**
+     * Trigger event
+     */
+    trigger: function(element, event) {
+        if (element) {
+            const customEvent = new Event(event, { bubbles: true, cancelable: true });
+            element.dispatchEvent(customEvent);
+        }
     },
 
     /**
      * Create element
-     * @param {string} tag - Tag name
-     * @param {Object} attributes - Element attributes
-     * @param {string} content - Element content
-     * @returns {Element}
      */
-    createElement: function(tag, attributes = {}, content = '') {
-        const element = document.createElement(tag);
-        for (const [key, value] of Object.entries(attributes)) {
-            element.setAttribute(key, value);
+    create: function(tagName, options = {}) {
+        const element = document.createElement(tagName);
+
+        if (options.id) {
+            element.id = options.id;
         }
-        if (content) {
-            element.textContent = content;
+
+        if (options.class) {
+            element.className = options.class;
         }
+
+        if (options.text) {
+            element.textContent = options.text;
+        }
+
+        if (options.html) {
+            element.innerHTML = options.html;
+        }
+
+        if (options.attributes) {
+            Object.entries(options.attributes).forEach(([key, value]) => {
+                element.setAttribute(key, value);
+            });
+        }
+
+        if (options.styles) {
+            Object.assign(element.style, options.styles);
+        }
+
         return element;
+    },
+
+    /**
+     * Append element to parent
+     */
+    append: function(parent, child) {
+        if (parent && child) {
+            parent.appendChild(child);
+        }
+    },
+
+    /**
+     * Prepend element to parent
+     */
+    prepend: function(parent, child) {
+        if (parent && child) {
+            parent.insertBefore(child, parent.firstChild);
+        }
+    },
+
+    /**
+     * Remove element
+     */
+    remove: function(element) {
+        if (element && element.parentNode) {
+            element.parentNode.removeChild(element);
+        }
+    },
+
+    /**
+     * Get parent element
+     */
+    getParent: function(element, selector) {
+        if (!element) return null;
+        return element.closest(selector);
+    },
+
+    /**
+     * Get next sibling
+     */
+    getNext: function(element, selector) {
+        if (!element) return null;
+        let next = element.nextElementSibling;
+        while (next) {
+            if (!selector || next.matches(selector)) {
+                return next;
+            }
+            next = next.nextElementSibling;
+        }
+        return null;
+    },
+
+    /**
+     * Get previous sibling
+     */
+    getPrev: function(element, selector) {
+        if (!element) return null;
+        let prev = element.previousElementSibling;
+        while (prev) {
+            if (!selector || prev.matches(selector)) {
+                return prev;
+            }
+            prev = prev.previousElementSibling;
+        }
+        return null;
+    },
+
+    /**
+     * Check if element is in viewport
+     */
+    isInViewport: function(element) {
+        if (!element) return false;
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    },
+
+    /**
+     * Scroll element into view
+     */
+    scrollIntoView: function(element, smooth = true) {
+        if (element) {
+            element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+        }
+    },
+
+    /**
+     * Get element position
+     */
+    getPosition: function(element) {
+        if (!element) return { top: 0, left: 0 };
+        const rect = element.getBoundingClientRect();
+        return {
+            top: rect.top + window.scrollY,
+            left: rect.left + window.scrollX,
+            width: rect.width,
+            height: rect.height
+        };
     }
 };
 
-// Export for use in modules
+// Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = DOM;
 }
