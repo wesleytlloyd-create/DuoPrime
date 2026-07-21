@@ -1,481 +1,623 @@
 @import 'variables';
 
-/* Responsive Typography */
-@media (max-width: $tablet) {
+/* Extra Large Screens (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .display-4 {
+        font-size: 3.5rem;
+    }
+    
     h1 {
-        font-size: 2rem !important;
+        font-size: 2.5rem;
     }
-
+    
     h2 {
-        font-size: 1.75rem !important;
+        font-size: 2rem;
     }
+}
 
-    h3 {
-        font-size: 1.5rem !important;
+/* Large Screens (992px to 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container {
+        max-width: 960px;
     }
+    
+    .display-4 {
+        font-size: 3rem;
+    }
+}
 
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 0;
+        min-height: 400px;
+    }
+    
+    .hero-section .container {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .service-card,
+    .project-card {
+        margin-bottom: 20px;
+    }
+    
+    .contact-card {
+        margin-bottom: 15px;
+    }
+    
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* Small Tablets & Large Phones (576px to 767px) */
+@media (max-width: 767px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+    }
+    
     .display-4 {
         font-size: 2rem !important;
     }
-
-    .lead {
-        font-size: 1rem !important;
-    }
-
-    section {
-        padding: 3rem 0;
-
-        h2 {
-            margin-bottom: 2rem;
-            font-size: 1.75rem;
-        }
-    }
-}
-
-/* Tablet and Medium Devices */
-@media (max-width: $tablet) {
-    .navbar-collapse {
-        margin-top: 1rem;
-    }
-
-    .nav-item {
-        margin: 0.5rem 0;
-    }
-
-    .hero-section {
-        min-height: 50vh;
-        padding: 3rem 0;
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        .lead {
-            font-size: 1rem;
-        }
-
-        .btn-lg {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.9rem;
-        }
-    }
-
-    .service-card,
-    .project-card,
-    .contact-card {
-        margin-bottom: 1.5rem;
-    }
-
-    .project-image {
-        height: 200px !important;
-    }
-
-    /* Two columns on tablet */
-    .row > [class*='col-md-6'] {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-
-    .row > [class*='col-lg-4'] {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-
-    .row > [class*='col-lg-3'] {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-
-    /* About Section */
-    .about-stats {
-        margin-top: 2rem;
-
-        .col-6 {
-            margin-bottom: 2rem;
-        }
-
-        h3 {
-            font-size: 2rem;
-        }
-    }
-
-    /* Forms */
-    .form-control,
-    .form-select {
-        padding: 0.65rem 0.75rem;
-        font-size: 16px;
-    }
-}
-
-/* Mobile Devices */
-@media (max-width: 576px) {
-    .container {
-        padding: 0 1rem;
-    }
-
-    body {
-        font-size: 0.95rem;
-    }
-
+    
     h1 {
-        font-size: 1.5rem !important;
+        font-size: 1.75rem;
     }
-
+    
     h2 {
-        font-size: 1.35rem !important;
+        font-size: 1.5rem;
     }
-
+    
     h3 {
-        font-size: 1.1rem !important;
-    }
-
-    /* Navigation */
-    #mainNav {
-        padding: 0.75rem 0;
-    }
-
-    .navbar-brand {
-        font-size: 1.4rem;
-    }
-
-    .nav-link {
-        margin-left: 0;
-        font-size: 0.95rem;
-    }
-
-    /* Hero Section */
-    .hero-section {
-        min-height: 40vh;
-        padding: 2rem 0;
-
-        .container {
-            padding: 1rem;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .lead {
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-lg {
-            width: 100%;
-            padding: 0.65rem 1rem;
-            font-size: 0.9rem;
-        }
-    }
-
-    /* Sections */
-    section {
-        padding: 2rem 0;
-
-        h2 {
-            margin-bottom: 1.5rem;
-            font-size: 1.35rem;
-        }
-    }
-
-    /* Cards */
-    .service-card {
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-
-        i {
-            font-size: 2rem;
-        }
-
-        h5 {
-            font-size: 1rem;
-        }
-
-        p {
-            font-size: 0.9rem;
-        }
-    }
-
-    .project-card {
-        margin-bottom: 1.5rem;
-
-        .project-image {
-            height: 180px !important;
-
-            i {
-                font-size: 2rem;
-            }
-
-            p {
-                font-size: 0.9rem;
-            }
-        }
-
-        .p-4 {
-            padding: 1rem !important;
-        }
-
-        h5 {
-            font-size: 1rem;
-        }
-
-        p {
-            font-size: 0.9rem;
-        }
-    }
-
-    .contact-card {
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-
-        i {
-            font-size: 1.5rem;
-        }
-
-        h5 {
-            font-size: 1rem;
-            margin: 0.75rem 0;
-        }
-
-        p {
-            font-size: 0.9rem;
-        }
-
-        a {
-            font-size: 0.95rem;
-        }
-    }
-
-    /* About Section */
-    .about-stats {
-        padding: 2rem;
-        border-radius: 8px;
-
-        .col-6 {
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            font-size: 0.85rem;
-        }
-    }
-
-    /* Forms */
-    .form-label {
-        font-size: 0.9rem;
-    }
-
-    .form-control,
-    .form-select {
-        padding: 0.65rem 0.75rem;
-        font-size: 16px;
-        border-radius: 4px;
-    }
-
-    .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.95rem;
-        border-radius: 4px;
-    }
-
-    .btn-lg {
-        width: 100%;
-        padding: 0.65rem 1rem;
-    }
-
-    /* Contact Form */
-    .row > div[class*='col-lg-8'] {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    /* Footer */
-    footer {
-        padding: 2rem 0 1rem;
-
-        h5 {
-            font-size: 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            font-size: 0.85rem;
-        }
-
-        a {
-            font-size: 0.85rem;
-        }
-
-        .row > div {
-            margin-bottom: 1.5rem;
-        }
-
-        hr {
-            margin: 1rem 0;
-        }
-    }
-
-    /* Badges */
-    .badge {
-        padding: 0.35rem 0.75rem;
-        font-size: 0.7rem;
-        margin: 0.2rem;
-    }
-
-    /* Modal */
-    .modal-dialog {
-        margin: 1rem auto;
-    }
-
-    .modal-body {
-        padding: 1.25rem;
-    }
-
-    /* Utilities */
-    .container {
-        max-width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    .g-4,
-    [class*='g-'] {
-        --bs-gutter-x: 1rem;
-        --bs-gutter-y: 1rem;
-    }
-
-    /* Full width for certain elements */
-    [class*='col-md-6'],
-    [class*='col-lg-'] {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    /* Button Full Width */
-    .w-100 {
-        width: 100% !important;
-    }
-
-    /* Text Alignment */
-    .text-center {
-        text-align: center;
-    }
-
-    /* Margin/Padding Utilities */
-    .mb-3 {
-        margin-bottom: 1rem !important;
-    }
-
-    .mb-4 {
-        margin-bottom: 1.5rem !important;
-    }
-
-    .mt-5 {
-        margin-top: 2rem !important;
-    }
-
-    .p-4 {
-        padding: 1rem !important;
-    }
-
-    .py-5 {
-        padding: 2rem 0 !important;
-    }
-}
-
-/* Extra Small Devices */
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.25rem !important;
-    }
-
-    h2 {
-        font-size: 1.1rem !important;
-    }
-
-    .hero-section h1 {
         font-size: 1.25rem;
     }
-
-    .hero-section .lead {
+    
+    .lead {
+        font-size: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-section {
+        padding: 1.5rem 0 !important;
+        min-height: 350px;
+    }
+    
+    .hero-section > * {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .hero-section .display-4 {
+        margin-bottom: 1rem;
+    }
+    
+    .service-card {
+        margin-bottom: 15px;
+        padding: 1.5rem !important;
+        text-align: center;
+    }
+    
+    .service-card i {
+        font-size: 2rem !important;
+    }
+    
+    .service-card h5 {
+        font-size: 1rem;
+    }
+    
+    .service-card p {
+        font-size: 0.9rem;
+    }
+    
+    .project-card {
+        margin-bottom: 15px;
+    }
+    
+    .project-image {
+        min-height: 200px !important;
+    }
+    
+    .project-card .p-4 {
+        padding: 1rem !important;
+    }
+    
+    .project-card h5 {
+        font-size: 1rem;
+    }
+    
+    .project-card p {
         font-size: 0.85rem;
     }
-
-    .btn-lg {
-        font-size: 0.8rem;
-        padding: 0.5rem 0.8rem;
+    
+    .badge {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        margin-bottom: 5px;
     }
-
-    .service-card i,
-    .project-card i {
+    
+    .contact-card {
+        margin-bottom: 12px;
+        padding: 1.5rem !important;
+    }
+    
+    .contact-card i {
         font-size: 1.5rem !important;
+    }
+    
+    .contact-card h5 {
+        font-size: 0.95rem;
+    }
+    
+    .contact-card p {
+        font-size: 0.85rem;
+        margin: 0;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+    
+    textarea.form-control {
+        min-height: 100px;
+    }
+    
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .modal-content {
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        padding: 1.5rem 0;
+    }
+    
+    footer h5 {
+        font-size: 1rem;
+    }
+    
+    footer p {
+        font-size: 0.85rem;
+    }
+    
+    .mb-4 {
+        margin-bottom: 1rem !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    .mb-3 {
+        margin-bottom: 0.75rem !important;
     }
 }
 
-/* Landscape Orientation */
-@media (max-height: 600px) and (orientation: landscape) {
+/* Phones (480px to 575px) */
+@media (max-width: 575px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-brand i {
+        margin-right: 5px;
+    }
+    
+    .display-4 {
+        font-size: 1.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    h5 {
+        font-size: 0.95rem;
+    }
+    
+    p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    #mainNav {
+        padding: 0.25rem 0;
+    }
+    
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        margin-left: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    
     .hero-section {
-        min-height: 35vh;
+        padding: 1rem 0 !important;
+        min-height: 300px;
+        text-align: center;
+    }
+    
+    .hero-section .container {
         padding: 1rem 0;
     }
-
-    section {
-        padding: 1.5rem 0;
+    
+    .hero-section h1 {
+        margin-bottom: 0.75rem !important;
+        line-height: 1.3;
     }
+    
+    .hero-section .lead {
+        margin-bottom: 1.5rem !important;
+        font-size: 0.9rem;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .btn-warning {
+        background-color: var(--accent-color) !important;
+        color: var(--primary-color) !important;
+    }
+    
+    section {
+        padding: 1.25rem 0 !important;
+    }
+    
+    .row {
+        margin-right: -5px;
+        margin-left: -5px;
+    }
+    
+    [class*="col-"] {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    
+    .service-card {
+        margin-bottom: 12px;
+        padding: 1rem !important;
+    }
+    
+    .service-card i {
+        font-size: 1.75rem !important;
+    }
+    
+    .service-card h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .service-card p {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    
+    .project-card {
+        margin-bottom: 12px;
+    }
+    
+    .project-image {
+        min-height: 150px !important;
+    }
+    
+    .project-card .p-4 {
+        padding: 0.75rem !important;
+    }
+    
+    .project-card h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .project-card p {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .d-flex.gap-2 {
+        gap: 4px !important;
+        flex-wrap: wrap;
+    }
+    
+    .badge {
+        padding: 3px 6px;
+        font-size: 0.7rem;
+        margin-right: 3px;
+        margin-bottom: 3px;
+    }
+    
+    .contact-card {
+        margin-bottom: 10px;
+        padding: 1rem !important;
+        text-align: center;
+    }
+    
+    .contact-card i {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .contact-card h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .contact-card p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+    
+    .contact-card a {
+        word-break: break-word;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        border-radius: 4px;
+    }
+    
+    .form-label {
+        font-size: 0.85rem;
+        margin-bottom: 4px;
+    }
+    
+    textarea.form-control {
+        min-height: 80px;
+        resize: vertical;
+    }
+    
+    .invalid-feedback {
+        font-size: 0.75rem;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-content {
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+    
+    .modal-header,
+    .modal-footer {
+        padding: 0.75rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1rem;
+    }
+    
+    footer {
+        padding: 1rem 0;
+    }
+    
+    footer h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    footer p {
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    footer a {
+        font-size: 0.75rem;
+    }
+    
+    footer hr {
+        margin: 0.75rem 0 !important;
+    }
+    
+    .mb-2 {
+        margin-bottom: 0.35rem !important;
+    }
+    
+    .mb-3 {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: 1rem !important;
+    }
+    
+    .py-5 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    .py-4 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+    
+    .mt-5 {
+        margin-top: 1rem !important;
+    }
+    
+    .g-4 {
+        gap: 0.75rem !important;
+    }
+}
 
+/* Ultra Small Phones (320px to 479px) */
+@media (max-width: 479px) {
+    .container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    
+    .display-4 {
+        font-size: 1.25rem !important;
+    }
+    
+    h1 {
+        font-size: 1.25rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+    
+    h5 {
+        font-size: 0.9rem;
+    }
+    
+    p, .lead {
+        font-size: 0.8rem;
+    }
+    
+    .row {
+        margin-right: -4px;
+        margin-left: -4px;
+    }
+    
+    [class*="col-"] {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+    
+    .btn-lg {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .hero-section {
+        padding: 0.75rem 0 !important;
+        min-height: 250px;
+    }
+    
+    .hero-section h1 {
+        margin-bottom: 0.5rem !important;
+    }
+    
     .service-card,
     .project-card,
     .contact-card {
-        margin-bottom: 0.5rem;
+        padding: 0.75rem !important;
+        margin-bottom: 10px;
     }
-}
-
-/* High Resolution Displays */
-@media (min-width: 1440px) {
-    .container {
-        max-width: 1320px;
-    }
-
-    section {
-        padding: 6rem 0;
-    }
-
-    .hero-section {
-        min-height: 70vh;
-    }
-
-    h1 {
-        font-size: 3rem;
-    }
-
-    h2 {
-        font-size: 2.5rem;
-    }
-}
-
-/* Retina Displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    
     .project-image {
-        background-size: cover;
-        background-attachment: fixed;
+        min-height: 120px !important;
     }
-}
-
-/* Touch Devices */
-@media (hover: none) and (pointer: coarse) {
-    .service-card,
-    .project-card,
-    .contact-card,
-    .btn {
-        &:active {
-            transform: scale(0.98);
-        }
+    
+    .badge {
+        padding: 2px 4px;
+        font-size: 0.65rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.25rem;
+    }
+    
+    section {
+        padding: 1rem 0 !important;
     }
 }

@@ -19,6 +19,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
     font-size: 1.8rem;
     color: var(--accent-color) !important;
+    padding-right: 10px;
 }
 
 .nav-link {
@@ -51,6 +53,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     position: relative;
     overflow: hidden;
+    min-height: 500px;
 }
 
 .hero-section::before {
@@ -96,10 +99,6 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--accent-color);
 }
 
-.service-card i {
-    transition: color 0.3s ease;
-}
-
 .service-card:hover i {
     color: var(--primary-color);
 }
@@ -122,6 +121,7 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
     transition: transform 0.3s ease;
+    min-height: 250px;
 }
 
 .project-card:hover .project-image {
@@ -157,13 +157,13 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 10px 25px rgba(11, 30, 61, 0.1);
 }
 
+.contact-card:hover a {
+    color: var(--accent-color);
+}
+
 .contact-card a {
     font-weight: 600;
     transition: color 0.3s ease;
-}
-
-.contact-card a:hover {
-    color: var(--accent-color);
 }
 
 /* Forms */
@@ -185,6 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-label {
     color: var(--text-dark);
     margin-bottom: 8px;
+    font-weight: 500;
 }
 
 /* Buttons */
@@ -251,34 +252,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Responsive Typography */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    .display-4 {
-        font-size: 2.5rem;
-    }
-
-    .lead {
-        font-size: 1rem;
-    }
-
-    .service-card,
-    .project-card {
-        margin-bottom: 20px;
-    }
-
-    .contact-card {
-        margin-bottom: 15px;
-    }
-}
-
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -308,5 +281,372 @@ html {
     footer,
     .btn {
         display: none;
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Large Screens (992px to 1199px) */
+@media (max-width: 1199px) {
+    .display-4 {
+        font-size: 3rem;
+    }
+}
+
+/* Tablets (768px to 991px) */
+@media (max-width: 991px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+    
+    .hero-section {
+        padding: 2rem 0 !important;
+        min-height: 400px;
+    }
+    
+    .service-card,
+    .project-card {
+        margin-bottom: 20px;
+    }
+    
+    .contact-card {
+        margin-bottom: 15px;
+    }
+    
+    .py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+}
+
+/* Small Tablets & Large Phones (576px to 767px) */
+@media (max-width: 767px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .display-4 {
+        font-size: 2rem !important;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-section {
+        padding: 1.5rem 0 !important;
+        min-height: 350px;
+    }
+    
+    .hero-section > * {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .hero-section .display-4 {
+        margin-bottom: 1rem;
+    }
+    
+    .service-card {
+        margin-bottom: 15px;
+        padding: 1.5rem !important;
+        text-align: center;
+    }
+    
+    .service-card i {
+        font-size: 2rem !important;
+    }
+    
+    .project-card {
+        margin-bottom: 15px;
+    }
+    
+    .project-image {
+        min-height: 200px !important;
+    }
+    
+    .project-card .p-4 {
+        padding: 1rem !important;
+    }
+    
+    .badge {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        margin-bottom: 5px;
+    }
+    
+    .contact-card {
+        margin-bottom: 12px;
+        padding: 1.5rem !important;
+    }
+    
+    .contact-card i {
+        font-size: 1.5rem !important;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+    }
+    
+    .py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+}
+
+/* Phones (480px to 575px) */
+@media (max-width: 575px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    
+    .navbar-collapse {
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        margin-left: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .display-4 {
+        font-size: 1.5rem !important;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+    
+    h5 {
+        font-size: 0.95rem;
+    }
+    
+    p {
+        font-size: 0.85rem;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-section {
+        padding: 1rem 0 !important;
+        min-height: 300px;
+        text-align: center;
+    }
+    
+    .hero-section h1 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .hero-section .lead {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .service-card {
+        margin-bottom: 12px;
+        padding: 1rem !important;
+        text-align: center;
+    }
+    
+    .service-card i {
+        font-size: 1.75rem !important;
+    }
+    
+    .project-image {
+        min-height: 150px !important;
+    }
+    
+    .project-card .p-4 {
+        padding: 0.75rem !important;
+    }
+    
+    .badge {
+        padding: 3px 6px;
+        font-size: 0.7rem;
+        margin-bottom: 5px;
+    }
+    
+    .contact-card {
+        margin-bottom: 10px;
+        padding: 1rem !important;
+        text-align: center;
+    }
+    
+    .contact-card i {
+        font-size: 1.25rem !important;
+    }
+    
+    .form-control,
+    .form-select {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    textarea.form-control {
+        min-height: 80px;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    section {
+        padding: 1.25rem 0 !important;
+    }
+    
+    .py-5 {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+    
+    .mb-2 {
+        margin-bottom: 0.35rem !important;
+    }
+    
+    .mb-3 {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .mb-5 {
+        margin-bottom: 1rem !important;
+    }
+}
+
+/* Ultra Small Phones (320px to 479px) */
+@media (max-width: 479px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .display-4 {
+        font-size: 1.25rem !important;
+    }
+    
+    h1 {
+        font-size: 1.25rem;
+    }
+    
+    h2 {
+        font-size: 1.1rem;
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+    
+    h5 {
+        font-size: 0.9rem;
+    }
+    
+    p, .lead {
+        font-size: 0.8rem;
+    }
+    
+    .btn-lg {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .hero-section {
+        padding: 0.75rem 0 !important;
+        min-height: 250px;
+    }
+    
+    .hero-section h1 {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .service-card,
+    .project-card,
+    .contact-card {
+        padding: 0.75rem !important;
+        margin-bottom: 10px;
+    }
+    
+    .project-image {
+        min-height: 120px !important;
+    }
+    
+    .badge {
+        padding: 2px 4px;
+        font-size: 0.65rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.25rem;
+    }
+    
+    section {
+        padding: 1rem 0 !important;
     }
 }
